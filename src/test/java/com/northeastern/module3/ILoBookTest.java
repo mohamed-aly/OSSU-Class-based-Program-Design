@@ -40,4 +40,21 @@ class ILoBookTest {
         assertEquals(0, cheaperThan10.count());
 
     }
+
+    @Test
+    void testInsert() {
+        ILoBook newList = emptyList.insert(hp1);
+        assertEquals(1, newList.count());
+        assertEquals(20, newList.totalPrice());
+
+        newList = newList.insert(hp2);
+        assertEquals(2, newList.count());
+        assertEquals(50, newList.totalPrice());
+    }
+
+    @Test
+    void testSort() {
+        ILoBook sortedList = hpList.sort();
+        assertEquals(3, sortedList.count());
+    }
 }

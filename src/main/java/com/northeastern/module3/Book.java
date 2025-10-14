@@ -23,6 +23,10 @@ interface ILoBook{
 
     ILoBook cheaperThan(int price);
 
+    ILoBook insert(Book book);
+
+    ILoBook sort();
+
 }
 
 class MtLoBook implements ILoBook{
@@ -39,6 +43,16 @@ class MtLoBook implements ILoBook{
 
     @Override
     public ILoBook cheaperThan(int price) {
+        return this;
+    }
+
+    @Override
+    public ILoBook insert(Book book) {
+        return new ConsLoBook(book, this);
+    }
+
+    @Override
+    public ILoBook sort() {
         return this;
     }
 }
@@ -69,5 +83,18 @@ class ConsLoBook implements ILoBook{
         }
 
         return this.rest.cheaperThan(price);
+    }
+
+    @Override
+    public ILoBook insert(Book book) {
+        if (this.first.getPrice() < book.getPrice()){
+            return new ConsLoBook(this.first, this.rest.insert(book));
+        }
+        return new ConsLoBook(book, this);
+    }
+
+    @Override
+    public ILoBook sort() {
+        return this.rest.sort().insert(this.first);
     }
 }

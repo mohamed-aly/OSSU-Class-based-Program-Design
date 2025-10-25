@@ -35,4 +35,16 @@ class Person implements IAncestorTree {
 
         return 1 + countFemaleAnc();
     }
+
+    @Override
+    public boolean wellFormed() {
+        return this.mom.wellFormedAsParent(this.yob)
+               && this.dad.wellFormedAsParent(this.yob)
+               && this.mom.wellFormed() && this.dad.wellFormed();
+    }
+
+    @Override
+    public boolean wellFormedAsParent(int childYob) {
+        return this.yob < childYob;
+    }
 }

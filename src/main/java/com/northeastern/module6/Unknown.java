@@ -24,4 +24,14 @@ public class Unknown implements IAncestorTree{
     public int countFemaleAncAsParent() {
         return 0;
     }
+
+    @Override
+    public boolean wellFormed() {
+        return true;
+    }
+
+    @Override
+    public boolean wellFormedAsParent(int childYob) {
+        return true;
+    }
 }

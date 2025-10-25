@@ -9,4 +9,8 @@ public interface IAncestorTree {
     int countFemaleAnc();
 
     int countFemaleAncAsParent();
+
+    boolean wellFormed();
+
+    boolean wellFormedAsParent(int childYob);
 }

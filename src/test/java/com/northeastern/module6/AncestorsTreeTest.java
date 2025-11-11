@@ -39,5 +39,14 @@ class AncestorsTreeTest {
         assertEquals(8, andrew.countFemaleAnc());
     }
 
+    @Test
+    void testYoungestAncAtGen(){
+        assertEquals(andrew, andrew.youngestPersonAtGen(0));
+        assertEquals(bree, andrew.youngestPersonAtGen(1));
+        assertEquals(candace, andrew.youngestPersonAtGen(2));
+        assertEquals(dixon, andrew.youngestPersonAtGen(3));
+        assertEquals(eustace, andrew.youngestPersonAtGen(4));
+    }
+
 
 }

@@ -29,7 +29,7 @@ class Person implements IAncestorTree {
 
     @Override
     public int countFemaleAncAsParent() {
-        if (this.isMale){
+        if (this.isMale) {
             return countFemaleAnc();
         }
 
@@ -47,4 +47,28 @@ class Person implements IAncestorTree {
     public boolean wellFormedAsParent(int childYob) {
         return this.yob < childYob;
     }
+
+    @Override
+    public IAncestorTree youngestPersonAtGen(int gen) {
+        if (gen == 0) {
+            return this;
+        }
+
+        return this.mom.youngestPersonAtGen(gen - 1).youngerIAT(this.dad.youngestPersonAtGen(gen - 1));
+    }
+
+    @Override
+    public IAncestorTree youngerIAT(IAncestorTree other) {
+        return other.youngerIATHelper(this, this.yob);
+    }
+
+    @Override
+    public IAncestorTree youngerIATHelper(IAncestorTree other, int otherYob) {
+        if (otherYob > this.yob) {
+            return other;
+        }
+        return this;
+    }
+
+
 }

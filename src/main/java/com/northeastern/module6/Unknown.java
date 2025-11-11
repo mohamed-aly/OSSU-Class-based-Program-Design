@@ -34,4 +34,22 @@ public class Unknown implements IAncestorTree{
     public boolean wellFormedAsParent(int childYob) {
         return true;
     }
+
+    @Override
+    public IAncestorTree youngestPersonAtGen(int gen) {
+        if(gen == 0){
+            return this;
+        }
+        return new Unknown();
+    }
+
+    @Override
+    public IAncestorTree youngerIAT(IAncestorTree other) {
+        return other;
+    }
+
+    @Override
+    public IAncestorTree youngerIATHelper(IAncestorTree other, int otherYob) {
+        return other;
+    }
 }

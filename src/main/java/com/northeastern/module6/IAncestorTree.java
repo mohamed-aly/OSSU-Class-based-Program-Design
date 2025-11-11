@@ -13,4 +13,10 @@ public interface IAncestorTree {
     boolean wellFormed();
 
     boolean wellFormedAsParent(int childYob);
+
+    IAncestorTree youngestPersonAtGen(int gen);
+
+    IAncestorTree youngerIAT(IAncestorTree other);
+
+    IAncestorTree youngerIATHelper(IAncestorTree other, int otherYob);
 }
